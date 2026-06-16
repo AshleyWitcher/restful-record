@@ -1,0 +1,486 @@
+/* ============================================================
+   THE RESTFUL RECORD — Speakeasy Candlelight Theme
+   ============================================================ */
+
+/* --- RESET & BASE --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #0c0906;
+  --bg-mid:       #13100c;
+  --bg-card:      #1a1410;
+  --bg-card-alt:  #201810;
+  --amber:        #c8843a;
+  --amber-glow:   #e8a04a;
+  --amber-dim:    #8a5520;
+  --purple:       #9b7fc4;
+  --purple-glow:  #c0a8e8;
+  --cream:        #e8d5b0;
+  --cream-dim:    #b09878;
+  --burgundy:     #3b1a0f;
+  --border:       rgba(200,132,58,0.18);
+  --border-strong:rgba(200,132,58,0.35);
+  --smoke:        rgba(180,140,80,0.04);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; line-height: 1.25; }
+
+.section-eyebrow, .hero-eyebrow, .ep-number, .card-number {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+/* --- LAYOUT --- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.container.narrow { max-width: 720px; }
+.section { padding: 6rem 0; }
+
+/* --- NAV --- */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.1rem 0;
+  background: rgba(12,9,6,0.82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.nav.scrolled { background: rgba(12,9,6,0.97); }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.logo-img { height: 52px; width: 52px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
+.nav-links { list-style: none; display: flex; gap: 2.4rem; }
+.nav-link {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--cream-dim);
+  transition: color 0.2s;
+}
+.nav-link:hover, .nav-link.active { color: var(--amber-glow); }
+
+/* --- HERO --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 7rem 2rem 5rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 100%, rgba(120,60,10,0.28) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(60,20,0,0.4) 0%, transparent 70%),
+    var(--bg);
+}
+.hero-smoke {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 40% 30% at 25% 60%, rgba(200,132,58,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 40% at 75% 40%, rgba(155,127,196,0.03) 0%, transparent 70%);
+  animation: smokeShift 18s ease-in-out infinite alternate;
+}
+@keyframes smokeShift {
+  0%   { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 1;   transform: scale(1.06) translateY(-8px); }
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-eyebrow { margin-bottom: 1.2rem; }
+.hero-title {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-style: italic;
+  color: var(--cream);
+  text-shadow: 0 0 60px rgba(200,132,58,0.25), 0 2px 4px rgba(0,0,0,0.6);
+  margin-bottom: 1.2rem;
+  animation: candleFlicker 8s ease-in-out infinite;
+}
+@keyframes candleFlicker {
+  0%, 100% { text-shadow: 0 0 60px rgba(200,132,58,0.25), 0 2px 4px rgba(0,0,0,0.6); }
+  25%       { text-shadow: 0 0 80px rgba(200,132,58,0.35), 0 2px 4px rgba(0,0,0,0.6); }
+  50%       { text-shadow: 0 0 45px rgba(200,132,58,0.2),  0 2px 4px rgba(0,0,0,0.6); }
+  75%       { text-shadow: 0 0 90px rgba(200,132,58,0.38), 0 2px 4px rgba(0,0,0,0.6); }
+}
+.hero-tagline {
+  font-size: 1rem;
+  color: var(--cream-dim);
+  letter-spacing: 0.06em;
+  margin-bottom: 2.4rem;
+}
+.hero-cta-group {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 2.4rem;
+}
+.platform-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.6rem; flex-wrap: wrap;
+  font-size: 0.75rem;
+}
+.platform-label { color: var(--cream-dim); letter-spacing: 0.06em; }
+.platform-links { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.platform-link { color: var(--amber); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.platform-link:hover { color: var(--amber-glow); }
+.dot { color: var(--amber-dim); }
+
+/* --- CANDLE DECORATION --- */
+.hero-candle {
+  position: absolute; right: 8%; bottom: 10%;
+  display: flex; flex-direction: column; align-items: center;
+  opacity: 0.55; z-index: 1;
+}
+.candle-flame {
+  width: 10px; height: 22px;
+  background: radial-gradient(ellipse at 50% 80%, #f5d060 0%, var(--amber-glow) 40%, rgba(200,100,20,0.6) 75%, transparent 100%);
+  border-radius: 50% 50% 30% 30%;
+  box-shadow: 0 0 18px 6px rgba(240,180,60,0.4), 0 0 40px 12px rgba(200,130,40,0.2);
+  animation: flameFlicker 3.2s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes flameFlicker {
+  0%, 100% { transform: scaleX(1)    scaleY(1)    rotate(-1deg); }
+  20%       { transform: scaleX(0.9) scaleY(1.05) rotate(1.5deg); }
+  40%       { transform: scaleX(1.1) scaleY(0.96) rotate(-0.5deg); }
+  60%       { transform: scaleX(0.95)scaleY(1.08) rotate(2deg); }
+  80%       { transform: scaleX(1.05)scaleY(0.98) rotate(-1.5deg); }
+}
+.candle-body {
+  width: 18px; height: 80px;
+  background: linear-gradient(180deg, #d4c4a8 0%, #b8a888 40%, #8a7858 100%);
+  border-radius: 2px 2px 1px 1px;
+  box-shadow: inset -3px 0 6px rgba(0,0,0,0.3);
+}
+.candle-flame--sm { width: 7px; height: 14px; }
+.candle-body--sm  { width: 12px; height: 55px; }
+
+/* --- BUTTONS --- */
+.btn-primary {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  background: var(--amber);
+  color: var(--bg);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  border: none; cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+  background: var(--amber-glow);
+  box-shadow: 0 0 24px rgba(200,132,58,0.45);
+}
+.btn-ghost {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  background: transparent;
+  color: var(--cream-dim);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.btn-ghost:hover {
+  color: var(--amber);
+  border-color: var(--amber);
+  box-shadow: 0 0 18px rgba(200,132,58,0.15);
+}
+
+/* --- ABOUT STRIP --- */
+.about-strip {
+  padding: 4rem 0;
+  background: linear-gradient(180deg, rgba(59,26,15,0.25) 0%, transparent 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-strip-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  color: var(--cream-dim);
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* --- SECTION TITLES --- */
+.section-eyebrow { margin-bottom: 0.6rem; display: block; }
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--cream);
+  margin-bottom: 3rem;
+}
+
+/* --- LATEST EPISODE PLAYER --- */
+.latest-section { background: var(--bg-mid); }
+.latest-player-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3rem 2rem;
+  min-height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  box-shadow: 0 0 40px rgba(200,132,58,0.06) inset;
+}
+.latest-player-box iframe { width: 100%; border: none; }
+.player-placeholder-text {
+  color: var(--amber-dim);
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* --- EPISODE CARDS --- */
+.episode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.6rem;
+  margin-bottom: 3rem;
+}
+.episode-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.episode-card:hover {
+  border-color: var(--amber-dim);
+  box-shadow: 0 0 32px rgba(200,132,58,0.12);
+}
+.card-glow {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--amber-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.episode-card:hover .card-glow { opacity: 1; }
+.card-inner { padding: 2rem; }
+.card-number { margin-bottom: 0.8rem; }
+.card-title {
+  font-size: 1.25rem;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+.card-desc { font-size: 0.88rem; color: var(--cream-dim); line-height: 1.65; margin-bottom: 1.4rem; }
+.card-listen {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-decoration: none;
+  transition: color 0.2s, letter-spacing 0.2s;
+}
+.card-listen:hover { color: var(--amber-glow); letter-spacing: 0.18em; }
+
+.view-all-wrap { text-align: center; }
+
+/* --- NEWSLETTER --- */
+.newsletter-section {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(59,26,15,0.4) 0%, transparent 70%),
+    var(--bg-mid);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.newsletter-section .section-title { margin-bottom: 2rem; }
+.newsletter-form {
+  display: flex; flex-direction: column; gap: 0.9rem;
+  align-items: center;
+}
+.form-input {
+  width: 100%; max-width: 420px;
+  padding: 0.85rem 1.2rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  color: var(--cream);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus {
+  border-color: var(--amber-dim);
+  box-shadow: 0 0 16px rgba(200,132,58,0.12);
+}
+.form-input::placeholder { color: var(--cream-dim); opacity: 0.5; }
+
+/* --- PAGE HERO (inner pages) --- */
+.page-hero {
+  position: relative;
+  padding: 10rem 2rem 5rem;
+  text-align: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(120,60,10,0.25) 0%, transparent 70%),
+    var(--bg);
+}
+.page-hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 1rem;
+  animation: candleFlicker 8s ease-in-out infinite;
+}
+.page-hero-sub { color: var(--cream-dim); font-size: 1rem; }
+
+/* --- EPISODES LIST PAGE --- */
+.episodes-list-section { background: var(--bg); }
+.episodes-instruction {
+  font-size: 0.8rem;
+  color: var(--amber-dim);
+  font-style: italic;
+  background: rgba(59,26,15,0.35);
+  border: 1px dashed var(--amber-dim);
+  border-radius: 3px;
+  padding: 1rem 1.4rem;
+  margin-bottom: 3.5rem;
+  line-height: 1.7;
+}
+.episodes-instruction code {
+  font-size: 0.78rem;
+  background: rgba(200,132,58,0.1);
+  padding: 0.1em 0.4em;
+  border-radius: 2px;
+  color: var(--amber);
+}
+.episode-entry {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 3rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.episode-entry:last-child { border-bottom: none; }
+.ep-number { margin-bottom: 0.5rem; display: block; }
+.ep-title {
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+.ep-desc { font-size: 0.9rem; color: var(--cream-dim); margin-bottom: 1.2rem; }
+.ep-platforms { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.ep-platform-link {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.ep-platform-link:hover { color: var(--amber); border-color: var(--amber-dim); }
+.episode-embed { position: relative; }
+.embed-placeholder {
+  background: var(--bg-card);
+  border: 1px dashed var(--border-strong);
+  border-radius: 3px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  min-height: 120px;
+  display: flex; align-items: center; justify-content: center;
+}
+.embed-placeholder p { color: var(--amber-dim); font-style: italic; font-size: 0.85rem; }
+
+/* --- ABOUT COMING SOON --- */
+.about-coming-soon { text-align: center; }
+.candle-centre {
+  display: flex; flex-direction: column; align-items: center;
+  margin: 0 auto 2.5rem;
+}
+.coming-soon-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--cream-dim);
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+}
+
+/* --- FOOTER --- */
+.footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+.footer-logo { height: 60px; width: 60px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1.2rem; }
+.footer-tagline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--cream-dim);
+  font-size: 0.95rem;
+  margin-bottom: 1.6rem;
+}
+.footer-nav {
+  display: flex; gap: 2rem; justify-content: center;
+  margin-bottom: 2rem;
+}
+.footer-nav a {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--amber); }
+.footer-copy { font-size: 0.75rem; color: var(--amber-dim); letter-spacing: 0.04em; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 700px) {
+  .episode-entry { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hero-candle { display: none; }
+  .nav-links { gap: 1.4rem; }
+  .section { padding: 4rem 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title, .page-hero-title { animation: none; }
+  .hero-smoke { animation: none; }
+  .candle-flame { animation: none; }
+}
