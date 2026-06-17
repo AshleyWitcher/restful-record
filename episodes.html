@@ -4,11 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>All Episodes | The Restful Record Sleep &amp; History Podcast</title>
-  <meta name="description" content="Browse all episodes of The Restful Record — slow, soothing history of world cities designed to help you sleep and relax." />
+  <meta name="description" content="Browse all episodes of The Restful Record — slow, soothing history of world cities and topics designed to help you sleep and relax." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Season accordion styles */
+    .season-block { margin-bottom: 3rem; }
+    .season-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.6rem 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: 3px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .season-header:hover { background: var(--bg-card-alt); border-color: var(--amber-dim); }
+    .season-header-left { display: flex; flex-direction: column; gap: 0.3rem; }
+    .season-label {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .season-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--cream);
+      font-weight: 600;
+    }
+    .season-count {
+      font-size: 0.8rem;
+      color: var(--cream-dim);
+      letter-spacing: 0.04em;
+    }
+    .season-toggle {
+      font-size: 1.4rem;
+      color: var(--amber);
+      transition: transform 0.3s ease;
+      line-height: 1;
+    }
+    .season-toggle.open { transform: rotate(180deg); }
+    .season-body {
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+    .season-body.collapsed { max-height: 0; }
+    .season-body.expanded { max-height: 99999px; }
+
+    /* Episode entry overrides for this page */
+    .episode-entry {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .episode-entry:last-child { border-bottom: none; padding-bottom: 1rem; }
+    .season-body .episodes-inner { padding: 0 0.5rem; }
+
+    @media (max-width: 700px) {
+      .episode-entry { grid-template-columns: 1fr; gap: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -30,72 +96,678 @@
   <section class="page-hero">
     <div class="hero-smoke"></div>
     <div class="container">
-      <p class="hero-eyebrow">Season One</p>
-      <h1 class="page-hero-title">Cities of the World</h1>
+      <p class="hero-eyebrow">42 Episodes</p>
+      <h1 class="page-hero-title">All Episodes</h1>
       <p class="page-hero-sub">Settle in. Let the history carry you somewhere peaceful.</p>
     </div>
   </section>
 
-  <!-- EPISODES LIST -->
+  <!-- EPISODES -->
   <section class="section episodes-list-section">
     <div class="container">
 
-      <p class="episodes-instruction">
-        ✦ To add your episodes: copy the embed code from each episode in Buzzsprout, then paste it inside the matching <code>.episode-embed</code> block below. Replace the placeholder text with your episode's real title and description.
-      </p>
-
-      <!-- EPISODE ENTRY — duplicate this block for each episode -->
-      <div class="episode-entry">
-        <div class="episode-meta">
-          <span class="ep-number">EP. 01</span>
-          <h2 class="ep-title">Episode Title Here</h2>
-          <p class="ep-desc">A line or two describing this episode — the city, the mood, what listeners will discover as they drift through its history.</p>
-          <div class="ep-platforms">
-            <a href="#" class="ep-platform-link">Apple Podcasts</a>
-            <a href="#" class="ep-platform-link">Spotify</a>
-            <a href="#" class="ep-platform-link">iHeart</a>
+      <!-- ===================== SEASON 2 ===================== -->
+      <div class="season-block">
+        <div class="season-header" onclick="toggleSeason('s2')">
+          <div class="season-header-left">
+            <span class="season-label">Now Airing</span>
+            <span class="season-title">Season Two</span>
+            <span class="season-count">14 episodes · Academic Disciplines</span>
           </div>
+          <span class="season-toggle open" id="s2-toggle">▾</span>
         </div>
-        <div class="episode-embed">
-          <!-- PASTE BUZZSPROUT EMBED HERE -->
-          <div class="embed-placeholder">
-            <p>Paste your Buzzsprout embed code here</p>
+        <div class="season-body expanded" id="s2-body">
+          <div class="episodes-inner">
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 14</span>
+                <h2 class="ep-title">The Quantum Realm</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-19306216"></div><script src="https://www.buzzsprout.com/2459520/episodes/19306216-the-restful-record-sleep-podcast-s2-e14-the-quantum-realm.js?container_id=buzzsprout-player-19306216&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 13</span>
+                <h2 class="ep-title">Forensics</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-19137909"></div><script src="https://www.buzzsprout.com/2459520/episodes/19137909-the-restful-record-sleep-podcast-s2-e13-forensics.js?container_id=buzzsprout-player-19137909&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 12</span>
+                <h2 class="ep-title">Criminology</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-19060060"></div><script src="https://www.buzzsprout.com/2459520/episodes/19060060-the-restful-record-sleep-podcast-s2-e12-criminology.js?container_id=buzzsprout-player-19060060&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 11</span>
+                <h2 class="ep-title">Law</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-18992967"></div><script src="https://www.buzzsprout.com/2459520/episodes/18992967-the-restful-record-sleep-podcast-s2-e11-law.js?container_id=buzzsprout-player-18992967&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 10</span>
+                <h2 class="ep-title">Conflict and Peace Studies</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-18785682"></div><script src="https://www.buzzsprout.com/2459520/episodes/18785682-the-restful-record-sleep-podcast-s2-e-10-conflict-and-peace-studies.js?container_id=buzzsprout-player-18785682&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 9</span>
+                <h2 class="ep-title">Linguistics</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-18704239"></div><script src="https://www.buzzsprout.com/2459520/episodes/18704239-the-restful-record-sleep-podcast-s2-e9-linguistics.js?container_id=buzzsprout-player-18704239&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 8</span>
+                <h2 class="ep-title">Geopolitics</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-18628062"></div><script src="https://www.buzzsprout.com/2459520/episodes/18628062-the-restful-record-sleep-podcast-s2-e8-geopolitics.js?container_id=buzzsprout-player-18628062&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 7</span>
+                <h2 class="ep-title">Journalism</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-18523945"></div><script src="https://www.buzzsprout.com/2459520/episodes/18523945-the-restful-record-sleep-podcast-s2-e7-journalism.js?container_id=buzzsprout-player-18523945&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 6</span>
+                <h2 class="ep-title">Artificial Intelligence: Past, Present and Future</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-18466820"></div><script src="https://www.buzzsprout.com/2459520/episodes/18466820-the-restful-record-sleep-podcast-s2-e6-artificial-intelligence-past-present-and-future.js?container_id=buzzsprout-player-18466820&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 5</span>
+                <h2 class="ep-title">Astronomy</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-18260229"></div><script src="https://www.buzzsprout.com/2459520/episodes/18260229-the-restful-record-sleep-podcast-s2-e5-astronomy.js?container_id=buzzsprout-player-18260229&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 4</span>
+                <h2 class="ep-title">Economics</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-18077923"></div><script src="https://www.buzzsprout.com/2459520/episodes/18077923-the-restful-record-sleep-podcast-s2-e4-economics.js?container_id=buzzsprout-player-18077923&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 3</span>
+                <h2 class="ep-title">Public Health</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-18077610"></div><script src="https://www.buzzsprout.com/2459520/episodes/18077610-the-restful-record-sleep-podcast-s2-e3-public-health.js?container_id=buzzsprout-player-18077610&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 2</span>
+                <h2 class="ep-title">Psychology</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17992101"></div><script src="https://www.buzzsprout.com/2459520/episodes/17992101-the-restful-record-sleep-podcast-s2-e2-psychology.js?container_id=buzzsprout-player-17992101&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S2 · EP. 1</span>
+                <h2 class="ep-title">Anthropology</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17943453"></div><script src="https://www.buzzsprout.com/2459520/episodes/17943453-the-restful-record-sleep-podcast-s2-e1-anthropology.js?container_id=buzzsprout-player-17943453&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
 
-      <div class="episode-entry">
-        <div class="episode-meta">
-          <span class="ep-number">EP. 02</span>
-          <h2 class="ep-title">Episode Title Here</h2>
-          <p class="ep-desc">A line or two describing this episode — the city, the mood, what listeners will discover as they drift through its history.</p>
-          <div class="ep-platforms">
-            <a href="#" class="ep-platform-link">Apple Podcasts</a>
-            <a href="#" class="ep-platform-link">Spotify</a>
-            <a href="#" class="ep-platform-link">iHeart</a>
+      <!-- ===================== SEASON 1 ===================== -->
+      <div class="season-block">
+        <div class="season-header" onclick="toggleSeason('s1')">
+          <div class="season-header-left">
+            <span class="season-label">Season One</span>
+            <span class="season-title">Cities of the World</span>
+            <span class="season-count">28 episodes · World cities through history</span>
           </div>
+          <span class="season-toggle" id="s1-toggle">▾</span>
         </div>
-        <div class="episode-embed">
-          <div class="embed-placeholder">
-            <p>Paste your Buzzsprout embed code here</p>
-          </div>
-        </div>
-      </div>
+        <div class="season-body collapsed" id="s1-body">
+          <div class="episodes-inner">
 
-      <div class="episode-entry">
-        <div class="episode-meta">
-          <span class="ep-number">EP. 03</span>
-          <h2 class="ep-title">Episode Title Here</h2>
-          <p class="ep-desc">A line or two describing this episode — the city, the mood, what listeners will discover as they drift through its history.</p>
-          <div class="ep-platforms">
-            <a href="#" class="ep-platform-link">Apple Podcasts</a>
-            <a href="#" class="ep-platform-link">Spotify</a>
-            <a href="#" class="ep-platform-link">iHeart</a>
-          </div>
-        </div>
-        <div class="episode-embed">
-          <div class="embed-placeholder">
-            <p>Paste your Buzzsprout embed code here</p>
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 28</span>
+                <h2 class="ep-title">History of Baghdad, Iraq</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17882978"></div><script src="https://www.buzzsprout.com/2459520/episodes/17882978-the-restful-record-a-sleep-podcast-s1-e27-history-of-baghdad-iraq.js?container_id=buzzsprout-player-17882978&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 27</span>
+                <h2 class="ep-title">History of Mumbai, India</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17768092"></div><script src="https://www.buzzsprout.com/2459520/episodes/17768092-the-restful-record-a-sleep-podcast-s1-e26-history-of-mumbai-india.js?container_id=buzzsprout-player-17768092&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 26</span>
+                <h2 class="ep-title">History of Phnom Penh, Cambodia</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17610065"></div><script src="https://www.buzzsprout.com/2459520/episodes/17610065-the-restful-record-a-sleep-podcast-s1-e25-history-of-phnom-penh-cambodia.js?container_id=buzzsprout-player-17610065&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 25</span>
+                <h2 class="ep-title">History of Hanoi, Vietnam</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link"></a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17531695"></div><script src="https://www.buzzsprout.com/2459520/episodes/17531695-the-restful-record-a-sleep-podcast-s1-e24-history-of-hanoi-vietnam.js?container_id=buzzsprout-player-17531695&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 24</span>
+                <h2 class="ep-title">History of New York City, USA</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17512579"></div><script src="https://www.buzzsprout.com/2459520/episodes/17512579-the-restful-record-a-sleep-podcast-s1-e23-history-of-new-york-city-united-states-of-america.js?container_id=buzzsprout-player-17512579&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 23</span>
+                <h2 class="ep-title">History of London, United Kingdom</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17414888"></div><script src="https://www.buzzsprout.com/2459520/episodes/17414888-the-restful-record-a-sleep-podcast-s1-e22-history-of-london-united-kingdom.js?container_id=buzzsprout-player-17414888&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 22</span>
+                <h2 class="ep-title">History of Tehran, Iran</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div class="embed-placeholder">
+                  <p> <div id="buzzsprout-player-17375334"></div><script src="https://www.buzzsprout.com/2459520/episodes/17375334-the-restful-record-a-sleep-podcast-s1-e21-history-of-tehran-iran.js?container_id=buzzsprout-player-17375334&player=small" type="text/javascript" charset="utf-8"></script></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 21</span>
+                <h2 class="ep-title">History of Sarajevo, Bosnia and Herzegovina</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17356318"></div><script src="https://www.buzzsprout.com/2459520/episodes/17356318-the-restful-record-a-sleep-podcast-s1-e20-history-of-sarajevo-bosnia-and-herzegovina.js?container_id=buzzsprout-player-17356318&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 20</span>
+                <h2 class="ep-title">History of Belfast, Northern Ireland</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17302621"></div><script src="https://www.buzzsprout.com/2459520/episodes/17302621-the-restful-record-a-sleep-podcast-s1-e19-history-of-belfast-northern-ireland.js?container_id=buzzsprout-player-17302621&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 19</span>
+                <h2 class="ep-title">History of Jaffna, Sri Lanka</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17259726"></div><script src="https://www.buzzsprout.com/2459520/episodes/17259726-the-restful-record-a-sleep-podcast-s1-e18-history-of-jaffna-sri-lanka.js?container_id=buzzsprout-player-17259726&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 18</span>
+                <h2 class="ep-title">History of Georgetown, Guyana</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17142093"></div><script src="https://www.buzzsprout.com/2459520/episodes/17142093-the-restful-record-a-sleep-podcast-s1-e17-history-of-georgetown-guyana.js?container_id=buzzsprout-player-17142093&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 17</span>
+                <h2 class="ep-title">History of Kinshasa, Democratic Republic of Congo</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17094143"></div><script src="https://www.buzzsprout.com/2459520/episodes/17094143-the-restful-record-kinshasa-democratic-republic-of-congo-drc.js?container_id=buzzsprout-player-17094143&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 16</span>
+                <h2 class="ep-title">History of Lagos, Nigeria</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17063013"></div><script src="https://www.buzzsprout.com/2459520/episodes/17063013-the-restful-record-a-sleep-podcast-s1-e16-history-of-lagos-nigeria.js?container_id=buzzsprout-player-17063013&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 15</span>
+                <h2 class="ep-title">History of Port-au-Prince, Haiti</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-17009824"></div><script src="https://www.buzzsprout.com/2459520/episodes/17009824-the-restful-record-a-sleep-podcast-s1-e15-history-of-port-au-prince-haiti.js?container_id=buzzsprout-player-17009824&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 14</span>
+                <h2 class="ep-title">History of St. Petersburg, Russia</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16860722"></div><script src="https://www.buzzsprout.com/2459520/episodes/16860722-the-restful-record-a-sleep-podcast-s1-e14-history-of-st-petersburg-russia.js?container_id=buzzsprout-player-16860722&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 13</span>
+                <h2 class="ep-title">History of Bangkok, Thailand</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16909073"></div><script src="https://www.buzzsprout.com/2459520/episodes/16909073-the-restful-record-a-sleep-podcast-s1-e13-history-of-bangkok-thailand.js?container_id=buzzsprout-player-16909073&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 12</span>
+                <h2 class="ep-title">History of Cape Town, South Africa</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16860269"></div><script src="https://www.buzzsprout.com/2459520/episodes/16860269-the-restful-record-a-sleep-podcast-s1-e12-history-of-cape-town-south-africa.js?container_id=buzzsprout-player-16860269&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 11</span>
+                <h2 class="ep-title">History of Buenos Aires, Argentina</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16840565"></div><script src="https://www.buzzsprout.com/2459520/episodes/16840565-the-restful-record-a-sleep-podcast-s1-e11-history-of-buenos-aires-argentina.js?container_id=buzzsprout-player-16840565&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 10</span>
+                <h2 class="ep-title">History of Medellín, Colombia</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16783415"></div><script src="https://www.buzzsprout.com/2459520/episodes/16783415-the-restful-record-a-sleep-podcast-s1-e10-history-of-medellin-colombia.js?container_id=buzzsprout-player-16783415&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 9</span>
+                <h2 class="ep-title">History of New Orleans, USA</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16783314"></div><script src="https://www.buzzsprout.com/2459520/episodes/16783314-the-restful-record-a-sleep-podcast-s1-e9-history-of-new-orleans-u-s-a.js?container_id=buzzsprout-player-16783314&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 8</span>
+                <h2 class="ep-title">History of Kigali, Rwanda</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16776951"></div><script src="https://www.buzzsprout.com/2459520/episodes/16776951-the-restful-record-a-sleep-podcast-s1-e8-history-of-kigali-rwanda.js?container_id=buzzsprout-player-16776951&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 7</span>
+                <h2 class="ep-title">History of Vancouver, Canada</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16763450"></div><script src="https://www.buzzsprout.com/2459520/episodes/16763450-the-restful-record-a-sleep-podcast-s1-e7-history-of-vancouver-canada.js?container_id=buzzsprout-player-16763450&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 6</span>
+                <h2 class="ep-title">History of Beirut, Lebanon</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16763424"></div><script src="https://www.buzzsprout.com/2459520/episodes/16763424-the-restful-record-a-sleep-podcast-s1-e6-history-of-beirut-lebanon.js?container_id=buzzsprout-player-16763424&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 5</span>
+                <h2 class="ep-title">History of Cairo, Egypt</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16763409"></div><script src="https://www.buzzsprout.com/2459520/episodes/16763409-the-restful-record-a-sleep-podcast-s1-e5-history-of-cairo-egypt.js?container_id=buzzsprout-player-16763409&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 4</span>
+                <h2 class="ep-title">History of Havana, Cuba</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16763378"></div><script src="https://www.buzzsprout.com/2459520/episodes/16763378-the-restful-record-a-sleep-podcast-s1-e4-history-of-havana-cuba.js?container_id=buzzsprout-player-16763378&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 3</span>
+                <h2 class="ep-title">History of Kabul, Afghanistan</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16763362"></div><script src="https://www.buzzsprout.com/2459520/episodes/16763362-the-restful-record-a-sleep-podcast-s1-e3-history-of-kabul-afghanistan.js?container_id=buzzsprout-player-16763362&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 2</span>
+                <h2 class="ep-title">History of Freetown, Sierra Leone</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16763331"></div><script src="https://www.buzzsprout.com/2459520/episodes/16763331-the-restful-record-a-sleep-podcast-s1-e2-history-of-freetown-sierra-leone.js?container_id=buzzsprout-player-16763331&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
+            <div class="episode-entry">
+              <div class="episode-meta">
+                <span class="ep-number">S1 · EP. 1</span>
+                <h2 class="ep-title">History of Amsterdam, Netherlands</h2>
+                <div class="ep-platforms">
+                  <a href="#" class="ep-platform-link">Apple Podcasts</a>
+                  <a href="#" class="ep-platform-link">Spotify</a>
+                  <a href="#" class="ep-platform-link">iHeart</a>
+                </div>
+              </div>
+              <div class="episode-embed">
+                <div id="buzzsprout-player-16763315"></div><script src="https://www.buzzsprout.com/2459520/episodes/16763315-the-restful-record-a-sleep-podcast-s1-e1-history-of-amsterdam-netherlands.js?container_id=buzzsprout-player-16763315&player=small" type="text/javascript" charset="utf-8"></script>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -118,5 +790,15 @@
   </footer>
 
   <script src="main.js"></script>
+  <script>
+    function toggleSeason(id) {
+      const body = document.getElementById(id + '-body');
+      const toggle = document.getElementById(id + '-toggle');
+      const isOpen = body.classList.contains('expanded');
+      body.classList.toggle('expanded', !isOpen);
+      body.classList.toggle('collapsed', isOpen);
+      toggle.classList.toggle('open', !isOpen);
+    }
+  </script>
 </body>
 </html>
