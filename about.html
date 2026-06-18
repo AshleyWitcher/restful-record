@@ -3,12 +3,150 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | The Restful Record — Ashley's Sleep History Podcast</title>
-  <meta name="description" content="The story behind The Restful Record — a sleep and relaxation podcast by Ashley, exploring world history in calm, unhurried narration." />
+  <title>About | The Restful Record — A Relaxing History Podcast</title>
+  <meta name="description" content="The story behind The Restful Record — a sleep and relaxation podcast by Ashley, exploring world history and science in calm, unhurried narration." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .about-body {
+      padding: 5rem 0 4rem;
+      background: var(--bg);
+    }
+    .about-body .container {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-photo-col { position: sticky; top: 100px; }
+    .about-photo-frame {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 80%, rgba(200,132,58,0.08) 0%, transparent 70%);
+    }
+    .photo-placeholder-icon {
+      font-size: 2.5rem;
+      opacity: 0.3;
+    }
+    .photo-placeholder-text {
+      font-size: 0.75rem;
+      color: var(--amber-dim);
+      font-style: italic;
+      text-align: center;
+      padding: 0 1.5rem;
+      letter-spacing: 0.04em;
+      position: relative;
+      z-index: 1;
+    }
+    .about-photo-caption {
+      margin-top: 1rem;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--cream-dim);
+    }
+    .about-text-col {}
+    .about-text-col .hero-eyebrow { margin-bottom: 0.8rem; display: block; }
+    .about-heading {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--cream);
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+    .about-text-col p {
+      font-size: 1rem;
+      color: var(--cream-dim);
+      line-height: 1.85;
+      margin-bottom: 1.6rem;
+    }
+    .about-text-col p:last-of-type { margin-bottom: 0; }
+    .about-divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--amber), transparent);
+      margin: 2.5rem 0;
+    }
+
+    /* Subscribe section */
+    .about-subscribe {
+      margin-top: 3.5rem;
+      padding: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-subscribe::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--amber-dim), transparent);
+    }
+    .subscribe-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    .subscribe-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--cream);
+      margin-bottom: 0.8rem;
+    }
+    .subscribe-subtext {
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      margin-bottom: 1.6rem;
+      line-height: 1.7;
+    }
+    .coming-soon-badge {
+      display: inline-block;
+      padding: 0.5rem 1.1rem;
+      border: 1px dashed var(--amber-dim);
+      border-radius: 2px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber-dim);
+      font-family: 'Lato', sans-serif;
+    }
+
+    /* When email is ready, remove .subscribe-form { display: none; }
+       and remove the coming-soon-badge block */
+    .subscribe-form { display: none; }
+    .subscribe-form.active { display: flex; flex-direction: column; gap: 0.9rem; }
+
+    @media (max-width: 800px) {
+      .about-body .container { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photo-col { position: static; }
+      .about-photo-frame { aspect-ratio: 1 / 1; }
+    }
+  </style>
 </head>
 <body>
 
@@ -22,6 +160,7 @@
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="episodes.html" class="nav-link">Episodes</a></li>
         <li><a href="about.html" class="nav-link active">About</a></li>
+        <li><a href="https://www.instagram.com/the_restful_record_podcast/" target="_blank" rel="noopener" class="nav-link nav-link--instagram">Instagram</a></li>
       </ul>
     </div>
   </nav>
@@ -31,22 +170,68 @@
     <div class="hero-smoke"></div>
     <div class="container">
       <p class="hero-eyebrow">The Story</p>
-      <h1 class="page-hero-title">About the Show</h1>
-      <p class="page-hero-sub">Coming soon — a quiet place to rest while the world tells its stories.</p>
+      <h1 class="page-hero-title">About The Restful Record</h1>
+      <p class="page-hero-sub">Why this podcast exists — and who it is for.</p>
     </div>
   </section>
 
-  <!-- ABOUT PLACEHOLDER -->
-  <section class="section about-coming-soon">
-    <div class="container narrow">
-      <div class="candle-centre">
-        <div class="candle-flame candle-flame--sm"></div>
-        <div class="candle-body candle-body--sm"></div>
+  <!-- ABOUT BODY -->
+  <section class="about-body">
+    <div class="container">
+
+      <!-- LEFT: PHOTO -->
+      <div class="about-photo-col">
+        <div class="about-photo-frame">
+          <span class="photo-placeholder-icon">✦</span>
+          <p class="photo-placeholder-text">Add a photo of Ashley here — replace this block with an &lt;img&gt; tag when ready.</p>
+        </div>
+        <p class="about-photo-caption">Ashley, Host &amp; Creator</p>
       </div>
-      <p class="coming-soon-text">
-        Ashley's story is on its way. Check back soon — or, in the meantime, let the episodes carry you somewhere peaceful.
-      </p>
-      <a href="episodes.html" class="btn-primary">Browse Episodes</a>
+
+      <!-- RIGHT: TEXT -->
+      <div class="about-text-col">
+        <span class="hero-eyebrow">Ashley's Story</span>
+        <h2 class="about-heading">Born from years<br />of sleep struggle.</h2>
+
+        <p>This podcast was born from years of sleep struggle. Ashley tried everything — and nothing worked consistently. What finally did was podcasts. Specifically history and science, delivered slowly and without urgency, something interesting enough to quiet a restless mind but calm enough to let it drift. She had two favourites. They came out once a week. The nights in between were long.</p>
+
+        <p>So in a frustrated, sleep-deprived act of necessity, she created The Restful Record.</p>
+
+        <div class="about-divider"></div>
+
+        <p>Millions of people struggle with sleep. Like Ashley, they might find that slow, interesting stories about history and science are exactly what they need to finally close their eyes and rest. If you feel burnt out, overstimulated, or just need something to carry your mind somewhere quieter — this podcast was made for you.</p>
+
+        <p>New episodes drop regularly. Subscribe below to get them delivered straight to your inbox, along with occasional updates from Ashley.</p>
+
+        <!-- SUBSCRIBE BOX -->
+        <div class="about-subscribe">
+          <span class="subscribe-eyebrow">Stay in the Loop</span>
+          <h3 class="subscribe-heading">New episodes. Quiet updates. No noise.</h3>
+          <p class="subscribe-subtext">Subscribe to hear about new episodes as soon as they drop — nothing else, nothing loud.</p>
+
+          <!-- COMING SOON STATE — remove this badge once your email is ready -->
+          <span class="coming-soon-badge">✦ Subscriptions opening soon</span>
+
+          <!-- ACTIVE FORM — when your email is ready:
+               1. Remove the coming-soon-badge above
+               2. Add the class "active" to this form (change to: class="subscribe-form active")
+               3. Replace YOUR_EMAIL_HERE with your actual email address in the action URL
+          -->
+          <form
+            class="subscribe-form"
+            action="https://formsubmit.co/YOUR_EMAIL_HERE"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="New Restful Record Subscriber" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://therestfulrecordpodcast.com/thankyou.html" />
+            <input type="text" name="name" placeholder="Your name" class="form-input" required />
+            <input type="email" name="email" placeholder="Your email address" class="form-input" required />
+            <button type="submit" class="btn-primary">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -59,6 +244,9 @@
         <a href="index.html">Home</a>
         <a href="episodes.html">Episodes</a>
         <a href="about.html">About</a>
+        <a href="https://podcasts.apple.com/ca/podcast/the-restful-record-a-relaxing-history-podcast/id1801118187" target="_blank" rel="noopener">Apple Podcasts</a>
+        <a href="https://open.spotify.com/show/4YP5SwGbtfugkNdruTzmFn" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://www.instagram.com/the_restful_record_podcast/" target="_blank" rel="noopener">Instagram</a>
       </nav>
       <p class="footer-copy">© 2025 The Restful Record. All rights reserved.</p>
     </div>
